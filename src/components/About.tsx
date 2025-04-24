@@ -7,26 +7,29 @@ import SkillBar from "./SkillBar"
 const About = () => {
   const ref = useRef(null)
   const skillsRef = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.3 })
-  const skillsInView = useInView(skillsRef, { once: false, amount: 0.3 })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const skillsInView = useInView(skillsRef, { once: true, amount: 0.1 })
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
+        duration: 0.3,
+        ease: "easeOut"
       },
     },
   }
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.3,
+        ease: "easeOut"
       },
     },
   }
@@ -77,18 +80,21 @@ const About = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div variants={itemVariants} className="relative">
-              <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-teal-500 to-teal-600 opacity-30 blur-lg"></div>
-              <div className="relative aspect-square overflow-hidden rounded-xl">
+            <motion.div variants={itemVariants} className="relative flex justify-center items-center">
+              <div className="absolute inset-0 -right-8 -left-8 -skew-x-12 transform">
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-teal-600/30 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-[repeating-linear-gradient(110deg,transparent,transparent_10px,rgba(20,184,166,0.1)_10px,rgba(20,184,166,0.1)_20px)]"></div>
+              </div>
+              <div className="relative overflow-hidden rounded-2xl w-[70%] aspect-[4/5] shadow-lg">
                 <img
                   src="/image/photo_01.jpg"
                   alt="Sudarshan Karunanithy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="relative z-10 max-w-xl">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Data Engineer & Analytics Specialist</h3>
               <p className="text-gray-600 mb-6">
                 As a Data Engineer and Analyst i am passionate about designing efficient data pipelines and unlocking actionable insights from data. 
@@ -133,33 +139,130 @@ const About = () => {
 
           <motion.div ref={skillsRef} variants={itemVariants} className="mt-20">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-center md:text-left">
-                <div className="flex items-baseline">
-                  <span className="text-8xl md:text-9xl font-bold text-gray-900">{experienceYears}</span>
-                  <span className="text-4xl md:text-5xl font-bold text-teal-500">+</span>
+              <div className="text-center md:text-left space-y-8">
+                <div>
+                  <div className="flex items-baseline">
+                    <span className="text-8xl md:text-9xl font-bold text-teal-500">5</span>
+                    <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
+                  </div>
+                  <p className="text-xl text-gray-600 mt-2">
+                    Years
+                    <br />
+                    Working
+                    <br />
+                    Experience
+                  </p>
                 </div>
-                <p className="text-xl text-gray-600 mt-2">
-                  Years
-                  <br />
-                  Experience
-                  <br />
-                  Working
-                </p>
+                
+                <div>
+                  <div className="flex items-baseline">
+                    <span className="text-8xl md:text-9xl font-bold text-teal-500">3</span>
+                    <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
+                  </div>
+                  <p className="text-xl text-gray-600 mt-2">
+                    Years
+                    <br />
+                    Technological
+                    <br />
+                    Experience
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">Core Skills</h3>
-
-                {skills.map((skill, index) => (
-                  <SkillBar
-                    key={index}
-                    name={skill.name}
-                    percentage={skill.percentage}
-                    color={skill.color}
-                    delay={index * 0.2}
-                    inView={skillsInView}
+                <h3 className="text-2xl font-bold mb-6 text-gray-900">Tech Stack</h3>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+                  <motion.img
+                    src="/Logos_Tech/Python_Logo.png"
+                    alt="Python"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
                   />
-                ))}
+                  <motion.img
+                    src="/Logos_Tech/AWS.png"
+                    alt="AWS"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/azure.svg"
+                    alt="Azure"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/Databricks.png"
+                    alt="Databricks"
+                    className="w-20 h-20 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/SQL.svg"
+                    alt="SQL"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.4 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/mongodb-svgrepo-com.svg"
+                    alt="MongoDB"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.5 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/docker logo.png"
+                    alt="Docker"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.6 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/snowflake.png"
+                    alt="Snowflake"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.7 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/Power_BI_Logo.svg"
+                    alt="Power BI"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.8 }}
+                  />
+                  <motion.img
+                    src="/Logos_Tech/github-mark.svg"
+                    alt="GitHub"
+                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
+                    whileHover={{ scale: 1.1 }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.9 }}
+                  />
+                </div>
               </div>
             </div>
           </motion.div>

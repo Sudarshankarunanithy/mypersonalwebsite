@@ -72,30 +72,31 @@ const Navbar = ({ activeSection }: NavbarProps) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex space-x-12">
+          <ul className="flex space-x-8">
             {navItems.map((item) => (
               <motion.li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="relative group py-2 px-1"
+                  className="relative block group"
                 >
-                  <motion.span 
-                    className={`text-black text-base relative z-10 transition-colors duration-300 ${
-                      activeSection === item.id ? 'text-teal-500' : 'group-hover:text-teal-500'
-                    }`}
-                  >
-                    {item.label}
-                  </motion.span>
-                  <motion.span 
-                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-teal-500 transform origin-left transition-all duration-300 ease-out ${
-                      activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
-                  />
-                  <motion.span 
-                    className={`absolute inset-0 -z-0 bg-teal-50 rounded-lg transform origin-left transition-all duration-300 ease-out ${
-                      activeSection === item.id ? 'scale-100 opacity-100' : 'scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100'
-                    }`}
-                  />
+                  <span className="relative block px-6 py-2">
+                    <motion.span 
+                      className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                        activeSection === item.id 
+                          ? 'bg-teal-500' 
+                          : 'opacity-0 group-hover:opacity-100 group-hover:bg-teal-500'
+                      }`}
+                    />
+                    <span 
+                      className={`relative z-10 text-base font-medium transition-colors duration-300 ${
+                        activeSection === item.id 
+                          ? 'text-white' 
+                          : 'text-gray-800 group-hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                  </span>
                 </a>
               </motion.li>
             ))}
@@ -105,11 +106,18 @@ const Navbar = ({ activeSection }: NavbarProps) => {
         {/* Contact Button */}
         <motion.a
           href="#contact"
-          className="hidden md:inline-flex items-center border-2 border-teal-500 px-5 py-2 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 rounded-lg"
-          whileHover={{ scale: 1.02, boxShadow: "0 0 10px rgba(45,212,191,0.3)" }}
-          whileTap={{ scale: 0.98 }}
+          className="hidden md:inline-flex items-center relative group"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Contact Me
+          <span className="relative block px-6 py-2">
+            <motion.span 
+              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-teal-500 transition-all duration-300"
+            />
+            <span className="relative z-10 font-medium text-gray-800 transition-colors duration-300 group-hover:text-white">
+              Contact Me
+            </span>
+          </span>
         </motion.a>
 
         {/* Mobile Menu Button */}
@@ -135,21 +143,37 @@ const Navbar = ({ activeSection }: NavbarProps) => {
             transition={{ duration: 0.2 }}
           >
             <nav className="container mx-auto px-6">
-              <ul className="flex flex-col space-y-6">
+              <ul className="flex flex-col space-y-4">
                 {navItems.map((item) => (
                   <motion.li 
                     key={item.id}
-                    whileHover={{ x: 10 }}
+                    className="w-full"
+                    whileHover={{ scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
                     <a
                       href={`#${item.id}`}
-                      className={`block text-lg transition-colors duration-300 ${
-                        activeSection === item.id ? "text-teal-500" : "text-black hover:text-teal-500"
-                      }`}
+                      className="relative block group"
                       onClick={handleMenuItemClick}
                     >
-                      {item.label}
+                      <span className="relative block px-6 py-2">
+                        <motion.span 
+                          className={`absolute inset-0 rounded-full transition-all duration-300 ${
+                            activeSection === item.id 
+                              ? 'bg-teal-500' 
+                              : 'opacity-0 group-hover:opacity-100 group-hover:bg-teal-500'
+                          }`}
+                        />
+                        <span 
+                          className={`relative z-10 text-base font-medium transition-colors duration-300 ${
+                            activeSection === item.id 
+                              ? 'text-white' 
+                              : 'text-gray-800 group-hover:text-white'
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      </span>
                     </a>
                   </motion.li>
                 ))}

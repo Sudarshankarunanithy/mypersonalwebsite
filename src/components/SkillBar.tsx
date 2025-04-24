@@ -7,11 +7,11 @@ interface SkillBarProps {
   name: string
   percentage: number
   color: string
-  delay?: number
+  delay: number
   inView: boolean
 }
 
-const SkillBar = ({ name, percentage, color, delay = 0, inView }: SkillBarProps) => {
+const SkillBar = ({ name, percentage, color, delay, inView }: SkillBarProps) => {
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
@@ -28,19 +28,18 @@ const SkillBar = ({ name, percentage, color, delay = 0, inView }: SkillBarProps)
   }, [inView, percentage, delay])
 
   return (
-    <div className="mb-4">
-      <div className="flex justify-between mb-1">
-        <span className="font-medium text-gray-300">{name}</span>
-        <span className="text-purple-500">{percentage}%</span>
+    <div className="space-y-2">
+      <div className="flex justify-between">
+        <span className="text-gray-900 font-medium">{name}</span>
+        <span className="text-teal-500 font-medium">{percentage}%</span>
       </div>
-      <div className="w-full bg-gray-800 rounded-full h-2.5 overflow-hidden">
+      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
         <motion.div
-          className={`h-2.5 rounded-full bg-gradient-to-r ${color}`}
-          style={{ width: `${width}%` }}
+          className={`h-full bg-gradient-to-r ${color} rounded-full`}
           initial={{ width: 0 }}
-          animate={{ width: `${width}%` }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        ></motion.div>
+          animate={inView ? { width: `${percentage}%` } : { width: 0 }}
+          transition={{ duration: 1, delay: delay, ease: "easeInOut" }}
+        />
       </div>
     </div>
   )
