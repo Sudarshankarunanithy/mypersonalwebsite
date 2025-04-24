@@ -10,6 +10,7 @@ import Projects from "./components/Projects"
 import Education from "./components/Education"
 import Contact from "./components/Contact"
 import Loader from "./components/Loader"
+import { FaLinkedin } from "react-icons/fa"
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -62,8 +63,37 @@ function App() {
               <Contact />
             </main>
             <footer className="py-6 text-center text-sm text-gray-500">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                <p>© {new Date().getFullYear()} | Designed & Developed with ❤️</p>
+              <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ delay: 0.5 }}
+                className="flex flex-col items-center space-y-2"
+              >
+                <p className="flex items-center justify-center gap-2">
+                  Crafted with ❤️ by{" "}
+                  <a 
+                    href="https://www.linkedin.com/in/sudarshankaru/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-teal-500 hover:text-teal-600 inline-flex items-center gap-1"
+                  >
+                    Sudarshan Karunanithy
+                    <FaLinkedin className="w-4 h-4" />
+                  </a>
+                </p>
+                <p className="flex items-center justify-center gap-2">
+                  Design wizardry by{" "}
+                  <a 
+                    href="https://www.linkedin.com/in/yuichi-nabeshima-9988b0188/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-teal-500 hover:text-teal-600 inline-flex items-center gap-1"
+                  >
+                    Yuichi Nabeshima
+                    <FaLinkedin className="w-4 h-4" />
+                  </a>
+                </p>
+                <p>© {new Date().getFullYear()}</p>
               </motion.div>
             </footer>
           </>

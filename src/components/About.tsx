@@ -94,25 +94,25 @@ const About = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="relative z-10 max-w-xl">
+            <motion.div variants={itemVariants} className="relative z-10 max-w-xl font-mono">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Data Engineer & Analytics Specialist</h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-justify">
                 As a Data Engineer and Analyst i am passionate about designing efficient data pipelines and unlocking actionable insights from data. 
                 With a strong foundation in data engineering, analytics, and business intelligence, I specialize in SQL, Python, and 
                 cloud-based data solutions.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-justify">
                 I have 3+ years of professional experience as a Data Analyst, where I worked extensively with data visualization, reporting, and 
                 business intelligence tools to drive data-driven decision-making. Additionally, I have successfully completed multiple freelance projects 
                 in data engineering, focusing on data migration from on-prem to cloud, ETL pipeline development, and data transformation processes.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-justify">
                 With hands-on experience in data analytics, I transitioned into data engineering to gain a deeper understanding of the entire data lifecycle. 
                 My expertise includes working with Databricks to build and optimize big data workflows, develop scalable ETL pipelines, and implement 
                 machine learning solutions on distributed computing frameworks. I leverage Apache Spark within Databricks to process large-scale datasets efficiently, 
                 ensuring seamless data integration and transformation.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 text-justify">
                 I am always open to collaborating on innovative projects, solving complex data challenges, and exploring new opportunities in data engineering and analytics. 
                 Let's connect and build data-driven solutions together!
               </p>
