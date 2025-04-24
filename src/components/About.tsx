@@ -81,7 +81,7 @@ const About = () => {
               <div className="absolute -inset-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 opacity-30 blur-lg"></div>
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <img
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/image/photo_01.jpg"
                   alt="Sudarshan Karunanithy"
                   className="w-full h-full object-cover"
                 />
@@ -108,7 +108,7 @@ const About = () => {
               </p>
               <p className="text-gray-300 mb-6">
                 I am always open to collaborating on innovative projects, solving complex data challenges, and exploring new opportunities in data engineering and analytics. 
-                Let’s connect and build data-driven solutions together!
+                Let's connect and build data-driven solutions together!
               </p>
               
               <div className="flex flex-wrap gap-3 mb-8">

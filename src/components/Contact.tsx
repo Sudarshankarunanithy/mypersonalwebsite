@@ -164,20 +164,20 @@ const Contact = () => {
     {
       icon: <FiPhone size={20} />,
       title: "Phone",
-      value: "+91 98765 43210",
-      link: "tel:+919876543210",
+      value: "+1 236 867 7387",
+      link: "tel:+12368677387",
     },
     {
       icon: <FiMapPin size={20} />,
       title: "Location",
-      value: "Surrey, BC",
+      value: "Vancouver, BC",
       link: "#",
     },
   ]
 
   const socialLinks = [
-    { icon: <FiLinkedin size={20} />, link: "#", label: "LinkedIn" },
-    { icon: <FiGithub size={20} />, link: "#", label: "GitHub" },
+    { icon: <FiLinkedin size={20} />, link: "https://www.linkedin.com/in/sudarshankaru/", label: "LinkedIn" },
+    { icon: <FiGithub size={20} />, link: "https://github.com/Sudarshankarunanithy", label: "GitHub" },
     { icon: <XIcon size={20} />, link: "#", label: "X (formerly Twitter)" }
   ]
 
@@ -212,6 +212,8 @@ const Contact = () => {
                   <a
                     key={index}
                     href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-start p-4 bg-gray-900/50 rounded-lg border border-gray-800 hover:border-purple-600/50 transition-colors duration-300"
                   >
                     <div className="mr-4 text-purple-500 mt-1">{info.icon}</div>
@@ -230,6 +232,8 @@ const Contact = () => {
                     <motion.a
                       key={index}
                       href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="p-3 bg-gray-900 text-white rounded-full hover:bg-purple-600 transition-colors duration-300"
                       whileHover={{ y: -5 }}
                       aria-label={social.label}
