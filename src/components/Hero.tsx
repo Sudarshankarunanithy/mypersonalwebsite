@@ -37,11 +37,20 @@ const Hero = () => {
     const numPoints = 8
     const baseSize = 2
 
-    // Create initial points
+    // Create initial points with adjusted positions to avoid bottom left
     for (let i = 0; i < numPoints; i++) {
+      let x = Math.random() * width
+      let y = Math.random() * height
+      
+      // Avoid bottom left corner
+      if (x < width * 0.3 && y > height * 0.7) {
+        x = Math.random() * (width * 0.7) + (width * 0.3)
+        y = Math.random() * (height * 0.7)
+      }
+
       points.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
+        x,
+        y,
         size: baseSize + Math.random() * 2,
         opacity: 0.1 + Math.random() * 0.2,
         vx: (Math.random() - 0.5) * 0.3,
@@ -55,9 +64,9 @@ const Hero = () => {
 
       // Create subtle gradient background
       const gradient = ctx.createLinearGradient(0, 0, width, height)
-      gradient.addColorStop(0, "rgba(0, 0, 0, 0.95)")
-      gradient.addColorStop(0.5, "rgba(20, 20, 20, 0.95)")
-      gradient.addColorStop(1, "rgba(0, 0, 0, 0.95)")
+      gradient.addColorStop(0, "rgba(255, 255, 255, 1)")
+      gradient.addColorStop(0.5, "rgba(240, 255, 250, 1)")
+      gradient.addColorStop(1, "rgba(255, 255, 255, 1)")
 
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, width, height)
@@ -67,9 +76,15 @@ const Hero = () => {
         point.x += point.vx
         point.y += point.vy
 
-        // Bounce off edges
+        // Bounce off edges and avoid bottom left corner
         if (point.x < 0 || point.x > width) point.vx *= -1
         if (point.y < 0 || point.y > height) point.vy *= -1
+
+        // Keep points away from bottom left corner
+        if (point.x < width * 0.3 && point.y > height * 0.7) {
+          point.x = width * 0.3
+          point.vx = Math.abs(point.vx)
+        }
       })
 
       // Draw connecting lines
@@ -83,7 +98,7 @@ const Hero = () => {
 
           if (distance < 400) {
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.05 - distance / 8000})`
+            ctx.strokeStyle = `rgba(20, 184, 166, ${0.05 - distance / 8000})`
             ctx.lineWidth = 0.5
             ctx.moveTo(point.x, point.y)
             ctx.lineTo(otherPoint.x, otherPoint.y)
@@ -96,7 +111,7 @@ const Hero = () => {
       points.forEach((point) => {
         ctx.beginPath()
         ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${point.opacity})`
+        ctx.fillStyle = `rgba(20, 184, 166, ${point.opacity})`
         ctx.fill()
       })
     }
@@ -140,7 +155,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }} />
       <div className="container mx-auto px-6 z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -151,7 +166,7 @@ const Hero = () => {
             className="overflow-hidden"
           >
             <motion.h2
-              className="text-white text-xl md:text-2xl font-medium mb-4"
+              className="text-teal-500 text-xl md:text-2xl font-medium mb-4"
               variants={typingVariants}
             >
               Hello, I'm
@@ -165,7 +180,7 @@ const Hero = () => {
             className="overflow-hidden"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6 text-white"
+              className="text-5xl md:text-7xl font-bold mb-6 text-gray-900"
               variants={typingVariants}
             >
               Sudarshan Karunanithy
@@ -179,7 +194,7 @@ const Hero = () => {
             className="overflow-hidden"
           >
             <motion.h3
-              className="text-xl md:text-2xl text-gray-300 mb-8"
+              className="text-xl md:text-2xl text-gray-600 mb-8"
               variants={typingVariants}
             >
               Data Engineer & Analytics Specialist
@@ -193,7 +208,7 @@ const Hero = () => {
             className="overflow-hidden"
           >
             <motion.p
-              className="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+              className="text-gray-500 text-lg md:text-xl mb-10 max-w-2xl mx-auto"
               variants={typingVariants}
             >
               Transforming raw data into actionable insights and building robust data pipelines that drive business
@@ -209,7 +224,7 @@ const Hero = () => {
           >
             <motion.a
               href="#contact"
-              className="bg-white text-black px-8 py-3 rounded-full font-medium transition-colors duration-300 hover:bg-gray-200"
+              className="bg-teal-500 text-white px-8 py-3 rounded-full font-medium transition-colors duration-300 hover:bg-teal-600 border-2 border-teal-500"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -217,7 +232,7 @@ const Hero = () => {
             </motion.a>
             <motion.a
               href="#projects"
-              className="border border-white text-white hover:bg-white/10 px-8 py-3 rounded-full font-medium transition-colors duration-300"
+              className="border-2 border-teal-500 text-teal-500 hover:bg-teal-50 px-8 py-3 rounded-full font-medium transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -228,7 +243,7 @@ const Hero = () => {
       </div>
       <motion.a
         href="#about"
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white hover:text-gray-300 transition-colors duration-300"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-teal-500 hover:text-teal-600 transition-colors duration-300"
         animate={{
           y: [0, 10, 0],
         }}

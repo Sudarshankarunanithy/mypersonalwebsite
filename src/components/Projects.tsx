@@ -77,7 +77,7 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="py-20 bg-gray-900">
+    <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -87,9 +87,9 @@ const Projects = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Project Experience</h2>
-            <div className="w-20 h-1 bg-purple-600 mx-auto mb-8"></div>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Project Experience</h2>
+            <div className="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               A selection of data engineering and analytics projects I've worked on, showcasing my skills in building
               data pipelines, analytics solutions, and data-driven applications.
             </p>
@@ -100,7 +100,7 @@ const Projects = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-purple-600/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-600/10"
+                className="group bg-white backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -108,11 +108,11 @@ const Projects = () => {
                     alt={project.title}
                     className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <motion.a
                       href={project.links.demo}
-                      className="p-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+                      className="p-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -120,7 +120,7 @@ const Projects = () => {
                     </motion.a>
                     <motion.a
                       href={project.links.github}
-                      className="p-2 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-colors"
+                      className="p-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -129,13 +129,13 @@ const Projects = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-purple-500 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-teal-500 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-gray-700 text-gray-300 rounded text-xs">
+                      <span key={i} className="px-2 py-1 bg-gray-50 text-gray-600 rounded text-xs">
                         {tech}
                       </span>
                     ))}
@@ -148,7 +148,7 @@ const Projects = () => {
           <motion.div variants={itemVariants} className="text-center mt-12">
             <motion.a
               href="#contact"
-              className="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-full font-medium"
+              className="inline-block bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full font-medium transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

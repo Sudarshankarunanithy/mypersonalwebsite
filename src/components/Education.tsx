@@ -121,7 +121,7 @@ const Education = () => {
   ]
 
   return (
-    <section id="education" className="py-20 bg-black">
+    <section id="education" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -131,9 +131,9 @@ const Education = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Education & Certifications</h2>
-            <div className="w-20 h-1 bg-purple-600 mx-auto mb-8"></div>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Education & Certifications</h2>
+            <div className="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               My academic background and professional certifications that have equipped me with the knowledge and skills
               in data engineering and analytics.
             </p>
@@ -142,18 +142,18 @@ const Education = () => {
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div variants={itemVariants}>
               <div className="flex items-center mb-8">
-                <FiBookOpen size={24} className="text-purple-500 mr-3" />
-                <h3 className="text-2xl font-bold">Education</h3>
+                <FiBookOpen size={24} className="text-teal-500 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">Education</h3>
               </div>
               <div className="space-y-8">
                 {education.map((edu, index) => (
-                  <div key={index} className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-                    <div className="inline-block px-3 py-1 mb-4 bg-purple-900/30 text-purple-400 rounded-full text-sm">
+                  <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-teal-500/50 transition-all duration-300">
+                    <div className="inline-block px-3 py-1 mb-4 bg-teal-50 text-teal-600 rounded-full text-sm">
                       {edu.year}
                     </div>
-                    <h4 className="text-xl font-bold mb-1">{edu.degree}</h4>
-                    <h5 className="text-purple-500 mb-4">{edu.institution}</h5>
-                    <p className="text-gray-300">{edu.description}</p>
+                    <h4 className="text-xl font-bold mb-1 text-gray-900">{edu.degree}</h4>
+                    <h5 className="text-teal-500 mb-4">{edu.institution}</h5>
+                    <div className="text-gray-600">{edu.description}</div>
                   </div>
                 ))}
               </div>
@@ -161,8 +161,8 @@ const Education = () => {
 
             <motion.div variants={itemVariants}>
               <div className="flex items-center mb-8">
-                <FiAward size={24} className="text-purple-500 mr-3" />
-                <h3 className="text-2xl font-bold">Certifications</h3>
+                <FiAward size={24} className="text-teal-500 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">Certifications</h3>
               </div>
               <div className="grid grid-cols-1 gap-4">
                 {certifications.map((cert, index) => cert.link ? (
@@ -173,13 +173,13 @@ const Education = () => {
                     key={index}
                   >
                     <motion.div
-                      className="flex items-center p-4 bg-gray-900/50 rounded-lg border border-gray-800 hover:border-purple-600/50 transition-colors duration-300"
+                      className="flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-teal-500/50 transition-colors duration-300"
                       whileHover={{ x: 5 }}
                     >
-                      <div className="mr-4 text-purple-500">{cert.icon}</div>
+                      <div className="mr-4 text-teal-500">{cert.icon}</div>
                       <div>
-                        <h4 className="font-bold">{cert.name}</h4>
-                        <div className="flex items-center text-sm text-gray-400">
+                        <h4 className="font-bold text-gray-900">{cert.name}</h4>
+                        <div className="flex items-center text-sm text-gray-600">
                           <span>{cert.issuer}</span>
                           <span className="mx-2">•</span>
                           <span>{cert.year}</span>
@@ -190,21 +190,20 @@ const Education = () => {
                 ) : (
                   <motion.div
                     key={index}
-                    className="flex items-center p-4 bg-gray-900/50 rounded-lg border border-gray-800 hover:border-purple-600/50 transition-colors duration-300"
+                    className="flex items-center p-4 bg-white rounded-lg border border-gray-200 hover:border-teal-500/50 transition-colors duration-300"
                     whileHover={{ x: 5 }}
                   >
-                    <div className="mr-4 text-purple-500">{cert.icon}</div>
+                    <div className="mr-4 text-teal-500">{cert.icon}</div>
                     <div>
-                      <h4 className="font-bold">{cert.name}</h4>
-                      <div className="flex items-center text-sm text-gray-400">
+                      <h4 className="font-bold text-gray-900">{cert.name}</h4>
+                      <div className="flex items-center text-sm text-gray-600">
                         <span>{cert.issuer}</span>
                         <span className="mx-2">•</span>
                         <span>{cert.year}</span>
                       </div>
                     </div>
                   </motion.div>
-                ))
-              }
+                ))}
               </div>
             </motion.div>
           </div>

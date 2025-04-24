@@ -68,7 +68,7 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="experience" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -78,9 +78,9 @@ const Experience = () => {
           animate={isInView ? "visible" : "hidden"}
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
-            <div className="w-20 h-1 bg-purple-600 mx-auto mb-8"></div>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Professional Experience</h2>
+            <div className="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               My professional journey in the data engineering field, where I've helped organizations build robust data
               infrastructure and derive valuable insights.
             </p>
@@ -88,7 +88,7 @@ const Experience = () => {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 top-0 h-full w-px bg-gradient-to-b from-purple-600 to-indigo-600 transform md:-translate-x-px"></div>
+            <div className="absolute left-0 md:left-1/2 top-0 h-full w-px bg-gradient-to-b from-teal-500 to-teal-600 transform md:-translate-x-px"></div>
 
             {/* Experience items */}
             {experiences.map((exp, index) => (
@@ -103,26 +103,26 @@ const Experience = () => {
                 <div
                   className={`absolute top-0 ${
                     index % 2 === 0 ? "left-0 md:left-auto md:right-0 md:-mr-3.5" : "left-0 -ml-3.5"
-                  } w-7 h-7 rounded-full bg-purple-600 border-4 border-black z-10`}
+                  } w-7 h-7 rounded-full bg-teal-500 border-4 border-white z-10`}
                 ></div>
 
-                <div className="bg-gray-900/80 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-purple-600/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-600/10">
-                  <div className="inline-block px-3 py-1 mb-4 bg-purple-900/30 text-purple-400 rounded-full text-sm">
+                <div className="bg-white backdrop-blur-sm p-6 rounded-xl border border-gray-200 hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10">
+                  <div className="inline-block px-3 py-1 mb-4 bg-teal-50 text-teal-600 rounded-full text-sm">
                     {exp.period}
                   </div>
-                  <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                  <h4 className="text-purple-500 mb-4">{exp.company}</h4>
-                  <ul className={`text-gray-300 mb-4 space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}>
+                  <h3 className="text-xl font-bold mb-1 text-gray-900">{exp.title}</h3>
+                  <h4 className="text-teal-500 mb-4">{exp.company}</h4>
+                  <ul className={`text-gray-600 mb-4 space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}>
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 flex-shrink-0"></span>
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 flex-shrink-0"></span>
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-gray-800 text-gray-300 rounded text-xs">
+                      <span key={i} className="px-2 py-1 bg-gray-50 text-gray-600 rounded text-xs">
                         {tech}
                       </span>
                     ))}
