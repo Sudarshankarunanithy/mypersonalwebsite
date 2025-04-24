@@ -33,8 +33,8 @@ A modern, responsive portfolio website built with React, TypeScript, and Tailwin
 1. Clone the repository:
 
 ```bash
-git clone git@github.com:YuichiNabeshima/sudarshan-portfolio.git
-cd sudarshan-portfolio
+git clone git@github.com/Sudarshankarunanithy/mypersonalwebsite.git
+cd mypersonalwebsite
 ```
 
 2. Install dependencies:
