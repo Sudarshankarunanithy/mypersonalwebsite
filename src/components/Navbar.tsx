@@ -59,14 +59,14 @@ const Navbar = ({ activeSection }: NavbarProps) => {
       <div className="container mx-auto px-6 h-20 flex justify-between items-center">
         <motion.a 
           href="#hero" 
-          className="text-xl font-medium" 
+          className="text-xl font-medium pt-6" 
           whileHover={{ scale: 1.05 }} 
           whileTap={{ scale: 0.95 }}
         >
           <img 
             src="/Logo.svg" 
             alt="Logo" 
-            className="h-16 w-auto"
+            className="h-24 w-auto"
           />
         </motion.a>
 
@@ -79,7 +79,7 @@ const Navbar = ({ activeSection }: NavbarProps) => {
                   href={`#${item.id}`}
                   className="relative block group"
                 >
-                  <span className="relative block px-6 py-2">
+                  <span className="relative block px-4 py-2">
                     <motion.span 
                       className={`absolute inset-0 rounded-full transition-all duration-300 ${
                         activeSection === item.id 
@@ -88,7 +88,7 @@ const Navbar = ({ activeSection }: NavbarProps) => {
                       }`}
                     />
                     <span 
-                      className={`relative z-10 text-base font-medium transition-colors duration-300 ${
+                      className={`relative z-10 text-base font-bold transition-colors duration-300 ${
                         activeSection === item.id 
                           ? 'text-white' 
                           : 'text-gray-800 group-hover:text-white'
@@ -102,23 +102,6 @@ const Navbar = ({ activeSection }: NavbarProps) => {
             ))}
           </ul>
         </nav>
-
-        {/* Contact Button */}
-        <motion.a
-          href="#contact"
-          className="hidden md:inline-flex items-center relative group"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="relative block px-6 py-2">
-            <motion.span 
-              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-teal-500 transition-all duration-300"
-            />
-            <span className="relative z-10 font-medium text-gray-800 transition-colors duration-300 group-hover:text-white">
-              Contact Me
-            </span>
-          </span>
-        </motion.a>
 
         {/* Mobile Menu Button */}
         <motion.button
@@ -165,7 +148,7 @@ const Navbar = ({ activeSection }: NavbarProps) => {
                           }`}
                         />
                         <span 
-                          className={`relative z-10 text-base font-medium transition-colors duration-300 ${
+                          className={`relative z-10 text-base font-bold transition-colors duration-300 ${
                             activeSection === item.id 
                               ? 'text-white' 
                               : 'text-gray-800 group-hover:text-white'
