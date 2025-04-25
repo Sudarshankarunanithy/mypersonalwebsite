@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { motion } from "framer-motion"
 
 interface SkillBarProps {
@@ -12,16 +12,16 @@ interface SkillBarProps {
 }
 
 const SkillBar = ({ name, percentage, color, delay, inView }: SkillBarProps) => {
-  const [width, setWidth] = useState(0)
+  // const [width, setWidth] = useState(0)
 
   useEffect(() => {
     let timeout: number;
     if (inView) {
       timeout = setTimeout(() => {
-        setWidth(percentage)
+
       }, delay * 1000)
     } else {
-      setWidth(0)
+     
     }
 
     return () => clearTimeout(timeout)

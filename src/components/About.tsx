@@ -2,13 +2,13 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import SkillBar from "./SkillBar"
+// import SkillBar from "./SkillBar"
 
 const About = () => {
   const ref = useRef(null)
   const skillsRef = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
-  const skillsInView = useInView(skillsRef, { once: true, amount: 0.1 })
+  // const skillsInView = useInView(skillsRef, { once: true, amount: 0.1 })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,36 +33,6 @@ const About = () => {
       },
     },
   }
-
-  const skills = [
-    {
-      name: "Data Engineering",
-      percentage: 95,
-      color: "from-teal-500 to-teal-600",
-    },
-    {
-      name: "Python & SQL",
-      percentage: 98,
-      color: "from-teal-500 to-teal-600",
-    },
-    {
-      name: "Big Data Technologies",
-      percentage: 90,
-      color: "from-teal-500 to-teal-600",
-    },
-    {
-      name: "Cloud Platforms",
-      percentage: 85,
-      color: "from-teal-500 to-teal-600",
-    },
-    {
-      name: "Data Visualization",
-      percentage: 88,
-      color: "from-teal-500 to-teal-600",
-    },
-  ]
-
-  const experienceYears = '2+'
 
   return (
     <section id="about" className="py-20 bg-white relative">
