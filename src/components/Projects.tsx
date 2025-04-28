@@ -31,25 +31,25 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Real-time Analytics Platform",
+      title: "Azure Data Platform Migration and Optimization",
       description:
-        "A real-time analytics platform that processes streaming data from IoT devices and provides insights through interactive dashboards.",
+        "Successfully led the migration of over 2 million records from 15+ on-premises MySQL tables to Azure Data Lake Storage Gen2 using Azure Data Factory, ensuring efficient batch loading and strict schema consistency. Designed and orchestrated scalable ETL workflows in Databricks, implementing Medallion architecture (Bronze, Silver, Gold layers) to strengthen data quality, lineage, and traceability. Integrated Git-based CI/CD pipelines to enable reliable deployment and automated testing, while optimizing the Synapse data warehouse layer through dimensional modeling, resulting in a 30% improvement in query performance. Additionally, conducted thorough root-cause analyses and validation testing processes, reducing transformation failure rates by 40% and significantly enhancing overall system reliability.",
       image: "/placeholder.svg?height=400&width=600",
-      technologies: ["Apache Kafka", "Spark Streaming", "Python", "React", "AWS"],
+      technologies: ["Azure Data Factory (ADF)", "Azure Data Lake Storage Gen2", "Azure Synapse Analytics", "Databricks", "SQL", "Dimensional Modeling","Git","CI/CD Pipelines"],
       links: {
         demo: "#",
-        github: "#",
+        github: "https://github.com/Sudarshankarunanithy/DE_HospitalDataBase",
       },
     },
     {
-      title: "Data Quality Framework",
+      title: "Cloud-Based Time Series Forecasting and Pipeline Optimization",
       description:
-        "An open-source framework for monitoring data quality in data pipelines, with automated testing and alerting capabilities.",
+        "Deployed a custom Linux instance on AWS EC2 to host critical pipeline components, configuring secure remote access via AWS Cloud Shell. Automated data ingestion and forecasting workflows using Apache Airflow, scheduling preprocessing and modeling tasks for efficient pipeline management. Developed and integrated an ARIMA-based time series model to generate financial forecasts, with results visualized through Jupyter Notebooks in VS Code for actionable business insights. Optimized job execution through parallelism and batch processing techniques, achieving a 40% reduction in processing latency. Implemented a robust log-based monitoring system to track task success and failure rates, proactively optimizing resource utilization across the pipeline.",
       image: "/placeholder.svg?height=400&width=600",
-      technologies: ["Python", "Great Expectations", "Airflow", "Docker", "Grafana"],
+      technologies: ["AWS EC2", "AWS Cloud Shell", "Apache Airflow", "Python", "ARIMA", "VS Code", "Linux", "CloudWatch"],
       links: {
         demo: "#",
-        github: "#",
+        github: "https://github.com/Sudarshankarunanithy/AWS_Pipeline_Airflow",
       },
     },
     {
@@ -64,14 +64,14 @@ const Projects = () => {
       },
     },
     {
-      title: "ETL Orchestration Tool",
+      title: "Serverless Weather Alerting System with AWS",
       description:
-        "A tool for orchestrating and monitoring ETL workflows across multiple data sources and destinations with a user-friendly interface.",
+        "Designed and implemented an event-driven, serverless system to automate severe weather alerting for field agents. Extracted weather data from a third-party public API using Python-based AWS Lambda functions, triggering daily workflows via AWS Glue for processing. Stored alert metadata in DynamoDB and leveraged Amazon SES to automatically notify field agents during adverse conditions. Integrated robust error handling, retry logic, and fallback mechanisms to ensure alert delivery integrity. Achieved near real-time alerting, reducing manual monitoring efforts by over 80%. The system was built with scalability in mind, allowing seamless future integration of additional notification channels such as SMS and mobile push notifications.",
       image: "/placeholder.svg?height=400&width=600",
-      technologies: ["Python", "FastAPI", "React", "Redis", "Docker"],
+      technologies: ["Python", "AWS Lambda", "Web API", "AWS Glue", "DynamoDB", "Amazon SES", "AWS Event-Driven Architecture"],
       links: {
         demo: "#",
-        github: "#",
+        github: "https://github.com/YuichiNabeshima/weather-app",
       },
     },
   ]
@@ -100,16 +100,23 @@ const Projects = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group bg-white backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10"
+                className="group bg-white backdrop-blur-sm rounded-xl overflow-hidden border border-gray-200 hover:border-teal-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10 p-6"
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-teal-600">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-700 text-justify">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, i) => (
+                      <span key={i} className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3 pt-4">
                     <motion.a
                       href={project.links.demo}
                       className="p-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors"
@@ -126,19 +133,6 @@ const Projects = () => {
                     >
                       <FiGithub size={18} />
                     </motion.a>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-teal-500 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-2 py-1 bg-gray-50 text-gray-600 rounded text-xs">
-                        {tech}
-                      </span>
-                    ))}
                   </div>
                 </div>
               </motion.div>

@@ -30,21 +30,21 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Senior Data Engineer",
-      company: "TechCorp Solutions",
-      period: "2021 - Present",
+      title: "Social Media Ambassador",
+      company: "STEM Montessori Academy of Canada",
+      period: "Aug, 2024 - Apr, 2025",
       description: [
         "Lead a team of 5 data engineers in designing and implementing data pipelines for real-time analytics",
         "Architected cloud-based data lake solution on AWS, reducing data processing costs by 40%",
         "Implemented data quality monitoring framework using Great Expectations, improving data reliability by 35%",
         "Collaborated with data science team to deploy ML models in production using MLflow and Kubernetes",
       ],
-      technologies: ["Apache Spark", "AWS", "Python", "Airflow", "Snowflake", "Kubernetes"],
+      technologies: ["Digital Marketing", "Excel", "PowerBI", "Airflow", "Snowflake", "Kubernetes"],
     },
     {
-      title: "Data Engineer",
-      company: "DataViz Analytics",
-      period: "2018 - 2021",
+      title: "Data Engineer and Analyst",
+      company: "NBCC India Limited",
+      period: "May, 2022 - Dec, 2023",
       description: [
         "Developed ETL pipelines using Apache Spark and Airflow for processing 5TB+ of daily data",
         "Designed and implemented data warehouse architecture on Google BigQuery",
@@ -54,9 +54,9 @@ const Experience = () => {
       technologies: ["Python", "Spark", "Airflow", "BigQuery", "Kafka", "Tableau"],
     },
     {
-      title: "Data Analyst",
-      company: "Global Insights Inc.",
-      period: "2016 - 2018",
+      title: "Sales and Marketing Manager",
+      company: "Preonic Energy System Pvt Ltd",
+      period: "Dec, 2017 - Mar, 2022",
       description: [
         "Performed data analysis and created reports for executive leadership",
         "Built ETL processes for integrating data from multiple sources",
