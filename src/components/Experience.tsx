@@ -59,7 +59,7 @@ const Experience = () => {
       period: "Dec, 2017 - Mar, 2022",
       description: [
         "Performed data analysis and created reports for executive leadership",
-        "Built ETL processes for integrating data from multiple sources",
+        "Built  processes for integrating data from multiple sources",
         "Developed interactive dashboards using Power BI",
         "Collaborated with business teams to translate requirements into data solutions",
       ],
