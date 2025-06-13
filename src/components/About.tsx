@@ -67,12 +67,12 @@ const About = () => {
             <motion.div variants={itemVariants} className="relative z-10 max-w-xl font-mono">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Data Engineer & Analytics Specialist</h3>
               <p className="text-gray-600 mb-6 text-justify">
-                As a Data Engineer and Analyst i am passionate about designing efficient data pipelines and unlocking actionable insights from data. 
+                As a Data Engineer and Analyst, I am passionate about designing efficient data pipelines and unlocking actionable insights from data. 
                 With a strong foundation in data engineering, analytics, and business intelligence, I specialize in SQL, Python, and 
                 cloud-based data solutions.
               </p>
               <p className="text-gray-600 mb-6 text-justify">
-                I have 3+ years of professional experience as a Data Analyst, where I worked extensively with data visualization, reporting, and 
+                I have 6+ years of professional experience as a Data Engineer & Analyst, where I worked extensively with data visualization, reporting, and 
                 business intelligence tools to drive data-driven decision-making. Additionally, I have successfully completed multiple freelance projects 
                 in data engineering, focusing on data migration from on-prem to cloud, ETL pipeline development, and data transformation processes.
               </p>
@@ -83,12 +83,17 @@ const About = () => {
                 ensuring seamless data integration and transformation.
               </p>
               <p className="text-gray-600 mb-6 text-justify">
+                In addition to my technical expertise, I have experience as a Social Media & Content Marketing Specialist, where I developed and executed data-driven content strategies across multiple platforms. 
+                I utilized analytics tools to monitor engagement metrics and optimize content reach, managed social media communications, and implemented lead generation tactics. 
+                My role included creating comprehensive monthly performance reports using Excel and social media dashboards, and collaborating with internal teams to align content with marketing goals.
+              </p>
+              <p className="text-gray-600 mb-6 text-justify">
                 I am always open to collaborating on innovative projects, solving complex data challenges, and exploring new opportunities in data engineering and analytics. 
                 Let's connect and build data-driven solutions together!
               </p>
               
               <div className="flex flex-wrap gap-3 mb-8">
-                {["Python", "SQL", "Apache Spark", "Apache Airflow", "AWS", "Azure", "Kafka", "ETL/ELT Pipelines", "Snowflake", "Tableau", "Data Pipeline Automation"," Data Integration & Transformation", "PowerBI", "GitHub", "Data Governance & Security", "Data Quality Monitoring & Performance Tuning"].map(
+                {["Python", "SQL", "Apache Spark", "Apache Airflow", "AWS", "Azure", "Kafka", "ETL/ELT Pipelines", "Snowflake", "Tableau", "Data Pipeline Automation", "Data Integration & Transformation", "PowerBI", "GitHub", "Data Governance & Security", "Data Quality Monitoring & Performance Tuning"].map(
                   (skill) => (
                     <span key={skill} className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-sm">
                       {skill}
@@ -115,7 +120,7 @@ const About = () => {
                     <span className="text-8xl md:text-9xl font-bold text-teal-500">5</span>
                     <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
                   </div>
-                  <p className="text-xl text-gray-600 mt-2">
+                  <p className="text-xl text-gray-600 mt-2 text-justify">
                     Years
                     <br />
                     Working
@@ -129,7 +134,7 @@ const About = () => {
                     <span className="text-8xl md:text-9xl font-bold text-teal-500">3</span>
                     <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
                   </div>
-                  <p className="text-xl text-gray-600 mt-2">
+                  <p className="text-xl text-gray-600 mt-2 text-justify">
                     Years
                     <br />
                     Technological
