@@ -18,10 +18,10 @@ const SkillBar = ({ name, percentage, color, delay, inView }: SkillBarProps) => 
     let timeout: number;
     if (inView) {
       timeout = setTimeout(() => {
-
+        // Animation will be handled by framer-motion
       }, delay * 1000)
     } else {
-     
+      // Reset animation when not in view
     }
 
     return () => clearTimeout(timeout)
