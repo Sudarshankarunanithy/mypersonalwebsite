@@ -31,13 +31,13 @@ const SuccessDialog = ({ isOpen, onClose }: SuccessDialogProps) => {
                 stiffness: 300,
                 duration: 0.3 
               }}
-              className="bg-gray-900/95 border border-teal-500/20 rounded-xl p-6 max-w-md w-full shadow-[0_0_30px_rgba(45,212,191,0.1)]"
+              className="bg-white border border-gray-200 rounded-2xl p-8 max-w-md w-full shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-end">
                 <motion.button
                   onClick={onClose}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label="Close dialog"
@@ -53,7 +53,7 @@ const SuccessDialog = ({ isOpen, onClose }: SuccessDialogProps) => {
                 transition={{ delay: 0.1 }}
               >
                 <motion.div 
-                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-500/20 text-teal-400 mb-4"
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 text-gray-900 mb-4"
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{
@@ -72,7 +72,7 @@ const SuccessDialog = ({ isOpen, onClose }: SuccessDialogProps) => {
                   </motion.div>
                 </motion.div>
                 <motion.h3 
-                  className="text-2xl font-bold mb-2 text-teal-400"
+                  className="text-2xl font-bold mb-2 text-gray-900"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -80,7 +80,7 @@ const SuccessDialog = ({ isOpen, onClose }: SuccessDialogProps) => {
                   Message Sent!
                 </motion.h3>
                 <motion.p 
-                  className="text-gray-300"
+                  className="text-gray-600"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -92,11 +92,11 @@ const SuccessDialog = ({ isOpen, onClose }: SuccessDialogProps) => {
               <motion.button
                 whileHover={{ 
                   scale: 1.02,
-                  boxShadow: "0 0 20px rgba(45,212,191,0.3)"
+                  boxShadow: "0 0 20px rgba(0,0,0,0.1)"
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onClose}
-                className="w-full bg-gradient-to-r from-teal-500 to-teal-400 text-white py-3 rounded-lg font-medium transition-all duration-300 shadow-lg shadow-teal-500/20"
+                className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium transition-all duration-300 shadow-lg"
               >
                 Close
               </motion.button>

@@ -2,40 +2,34 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-// import SkillBar from "./SkillBar"
 
 const About = () => {
   const ref = useRef(null)
-  const skillsRef = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
-  // const skillsInView = useInView(skillsRef, { once: true, amount: 0.1 })
+  const isInView = useInView(ref, { once: false, amount: 0.1 })
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        duration: 0.3,
-        ease: "easeOut"
+        staggerChildren: 0.2,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { y: 10, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.3,
-        ease: "easeOut"
+        duration: 0.6,
       },
     },
   }
 
   return (
-    <section id="about" className="py-20 bg-white relative">
+    <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -44,200 +38,51 @@ const About = () => {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">About Me</h2>
-            <div className="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
+          {/* Main Description - Large text like Martha template */}
+          <motion.div variants={itemVariants} className="mb-20">
+            <p className="text-2xl md:text-3xl text-gray-600 leading-relaxed max-w-4xl font-normal">
+              I build the data plumbing for companies.
+            </p>
+            <p className="text-2xl md:text-3xl text-gray-600 leading-relaxed max-w-4xl font-normal mt-6">
+              I make sure the right data shows up in the right place - clean, fast, and on time - so teams can trust it and use it.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div variants={itemVariants} className="relative flex justify-center items-center">
-              <div className="absolute inset-0 -right-8 -left-8 -skew-x-12 transform">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-teal-600/30 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 bg-[repeating-linear-gradient(110deg,transparent,transparent_10px,rgba(20,184,166,0.1)_10px,rgba(20,184,166,0.1)_20px)]"></div>
-              </div>
-              <div className="relative overflow-hidden rounded-2xl w-[70%] aspect-[4/5] shadow-lg">
-                <img
-                  src="/image/photo_01.jpg"
-                  alt="Sudarshan Karunanithy"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-              </div>
-            </motion.div>
+          {/* Profile Information - Larger photo and text like Martha template */}
+          <motion.div variants={itemVariants} className="flex items-center space-x-8 mb-20">
+            <div className="w-24 h-24 rounded-full overflow-hidden">
+              <img
+                src="/image/photo_01.jpg"
+                alt="Sudarshan Karunanithy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
+                Sudarshan Karunanithy
+              </h3>
+              <p className="text-xl text-gray-600 font-normal">
+                Data Engineer & Analytics Specialist
+              </p>
+            </div>
+          </motion.div>
 
-            <motion.div variants={itemVariants} className="relative z-10 max-w-xl font-mono">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Data Engineer & Analytics Specialist</h3>
-              <p className="text-gray-600 mb-6 text-justify">
-                As a Data Engineer and Analyst, I am passionate about designing efficient data pipelines and unlocking actionable insights from data. 
-                With a strong foundation in data engineering, analytics, and business intelligence, I specialize in SQL, Python, and 
-                cloud-based data solutions.
-              </p>
-              <p className="text-gray-600 mb-6 text-justify">
-                I have 6+ years of professional experience as a Data Engineer & Analyst, where I worked extensively with data visualization, reporting, and 
-                business intelligence tools to drive data-driven decision-making. Additionally, I have successfully completed multiple freelance projects 
-                in data engineering, focusing on data migration from on-prem to cloud, ETL pipeline development, and data transformation processes.
-              </p>
-              <p className="text-gray-600 mb-6 text-justify">
-                With hands-on experience in data analytics, I transitioned into data engineering to gain a deeper understanding of the entire data lifecycle. 
-                My expertise includes working with Databricks to build and optimize big data workflows, develop scalable ETL pipelines, and implement 
-                machine learning solutions on distributed computing frameworks. I leverage Apache Spark within Databricks to process large-scale datasets efficiently, 
-                ensuring seamless data integration and transformation.
-              </p>
-              <p className="text-gray-600 mb-6 text-justify">
-                In addition to my technical expertise, I have experience as a Social Media & Content Marketing Specialist, where I developed and executed data-driven content strategies across multiple platforms. 
-                I utilized analytics tools to monitor engagement metrics and optimize content reach, managed social media communications, and implemented lead generation tactics. 
-                My role included creating comprehensive monthly performance reports using Excel and social media dashboards, and collaborating with internal teams to align content with marketing goals.
-              </p>
-              <p className="text-gray-600 mb-6 text-justify">
-                I am always open to collaborating on innovative projects, solving complex data challenges, and exploring new opportunities in data engineering and analytics. 
-                Let's connect and build data-driven solutions together!
-              </p>
-              
-              <div className="flex flex-wrap gap-3 mb-8">
-                {["Python", "SQL", "Apache Spark", "Apache Airflow", "AWS", "Azure", "Kafka", "ETL/ELT Pipelines", "Snowflake", "Tableau", "Data Pipeline Automation", "Data Integration & Transformation", "PowerBI", "GitHub", "Data Governance & Security", "Data Quality Monitoring & Performance Tuning"].map(
-                  (skill) => (
-                    <span key={skill} className="px-3 py-1 bg-teal-50 text-teal-600 rounded-full text-sm">
-                      {skill}
-                    </span>
-                  ),
-                )}
+          {/* Statistics - Larger numbers and better spacing like Martha template */}
+          <motion.div variants={itemVariants} className="flex space-x-20">
+            <div>
+              <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
+                3+
               </div>
-              <motion.a
-                href="#experience"
-                className="inline-block bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-full font-medium transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                My Experience
-              </motion.a>
-            </motion.div>
-          </div>
-
-          <motion.div ref={skillsRef} variants={itemVariants} className="mt-20">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="text-center md:text-left space-y-8">
-                <div>
-                  <div className="flex items-baseline">
-                    <span className="text-8xl md:text-9xl font-bold text-teal-500">5</span>
-                    <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
-                  </div>
-                  <p className="text-xl text-gray-600 mt-2 text-justify">
-                    Years
-                    <br />
-                    Working
-                    <br />
-                    Experience
-                  </p>
-                </div>
-                
-                <div>
-                  <div className="flex items-baseline">
-                    <span className="text-8xl md:text-9xl font-bold text-teal-500">3</span>
-                    <span className="text-4xl md:text-5xl font-bold text-gray-900">+</span>
-                  </div>
-                  <p className="text-xl text-gray-600 mt-2 text-justify">
-                    Years
-                    <br />
-                    Technological
-                    <br />
-                    Experience
-                  </p>
-                </div>
+              <div className="text-base text-gray-600 font-medium">
+                Years industry experience
               </div>
-
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">Tech Stack</h3>
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-                  <motion.img
-                    src="/Logos_Tech/Python_Logo.png"
-                    alt="Python"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/AWS.png"
-                    alt="AWS"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/azure.svg"
-                    alt="Azure"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.2 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/Databricks.png"
-                    alt="Databricks"
-                    className="w-20 h-20 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/SQL.svg"
-                    alt="SQL"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/mongodb-svgrepo-com.svg"
-                    alt="MongoDB"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/docker logo.png"
-                    alt="Docker"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/snowflake.png"
-                    alt="Snowflake"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/Power_BI_Logo.svg"
-                    alt="Power BI"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.8 }}
-                  />
-                  <motion.img
-                    src="/Logos_Tech/github-mark.svg"
-                    alt="GitHub"
-                    className="w-16 h-16 object-contain hover:scale-110 transition-transform"
-                    whileHover={{ scale: 1.1 }}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.9 }}
-                  />
-                </div>
+            </div>
+            <div>
+              <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
+                15+
+              </div>
+              <div className="text-base text-gray-600 font-medium">
+                Projects completed
               </div>
             </div>
           </motion.div>

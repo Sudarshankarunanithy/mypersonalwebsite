@@ -30,82 +30,82 @@ const Navbar = ({ activeSection }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
-
   const handleMenuItemClick = () => {
     setIsOpen(false)
   }
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm transition-all duration-300 ${
-        scrolled ? "shadow-sm" : ""
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-6 h-20 flex justify-between items-center">
+        {/* Logo - Left side like Martha template */}
         <motion.a 
           href="#hero" 
-          className="text-xl font-medium pt-6" 
+          className={`text-lg font-bold transition-colors duration-300 ${
+            scrolled ? "text-gray-900" : "text-white"
+          }`}
           whileHover={{ scale: 1.05 }} 
           whileTap={{ scale: 0.95 }}
         >
-          <img 
-            src="/Logo.svg" 
-            alt="Logo" 
-            className="h-24 w-auto"
-          />
+          Sudarshan Karunanithy
         </motion.a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation - Center like Martha template */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
             {navItems.map((item) => (
               <motion.li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className="relative block group"
+                  className={`relative block font-medium text-sm transition-colors duration-300 ${
+                    scrolled 
+                      ? (activeSection === item.id ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900')
+                      : (activeSection === item.id ? 'text-white' : 'text-white/80 hover:text-white')
+                  }`}
                 >
-                  <span className="relative block px-4 py-2">
-                    <motion.span 
-                      className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                        activeSection === item.id 
-                          ? 'bg-teal-500' 
-                          : 'opacity-0 group-hover:opacity-100 group-hover:bg-teal-500'
+                  {item.label}
+                  {activeSection === item.id && (
+                    <motion.div
+                      className={`absolute -bottom-1 left-0 right-0 h-0.5 transition-colors duration-300 ${
+                        scrolled ? 'bg-gray-900' : 'bg-white'
                       }`}
+                      layoutId="activeSection"
                     />
-                    <span 
-                      className={`relative z-10 text-base font-bold transition-colors duration-300 ${
-                        activeSection === item.id 
-                          ? 'text-white' 
-                          : 'text-gray-800 group-hover:text-white'
-                      }`}
-                    >
-                      {item.label}
-                    </span>
-                  </span>
+                  )}
                 </a>
               </motion.li>
             ))}
           </ul>
         </nav>
 
+        {/* CTA Button - Right side like Martha template */}
+        <motion.a
+          href="#contact"
+          className={`hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ${
+            scrolled 
+              ? "bg-gray-900 text-white hover:bg-gray-800" 
+              : "bg-white text-black hover:bg-gray-100"
+          }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span>Get in touch</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
+          </svg>
+        </motion.a>
+
         {/* Mobile Menu Button */}
         <motion.button
-          className="md:hidden text-2xl text-black hover:text-teal-500 transition-colors duration-300"
+          className={`md:hidden text-2xl transition-colors duration-300 ${
+            scrolled ? "text-gray-900 hover:text-gray-700" : "text-white hover:text-white/80"
+          }`}
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -136,27 +136,14 @@ const Navbar = ({ activeSection }: NavbarProps) => {
                   >
                     <a
                       href={`#${item.id}`}
-                      className="relative block group"
+                      className={`block py-3 font-medium transition-colors duration-300 ${
+                        activeSection === item.id 
+                          ? 'text-gray-900' 
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
                       onClick={handleMenuItemClick}
                     >
-                      <span className="relative block px-6 py-2">
-                        <motion.span 
-                          className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                            activeSection === item.id 
-                              ? 'bg-teal-500' 
-                              : 'opacity-0 group-hover:opacity-100 group-hover:bg-teal-500'
-                          }`}
-                        />
-                        <span 
-                          className={`relative z-10 text-base font-bold transition-colors duration-300 ${
-                            activeSection === item.id 
-                              ? 'text-white' 
-                              : 'text-gray-800 group-hover:text-white'
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </span>
+                      {item.label}
                     </a>
                   </motion.li>
                 ))}

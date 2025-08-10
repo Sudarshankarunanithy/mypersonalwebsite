@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useRef, useState, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import { FiMail, FiMapPin, FiPhone, FiLinkedin, FiGithub, FiLoader } from "react-icons/fi"
@@ -66,7 +65,7 @@ const Contact = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.6,
       },
     },
   }
@@ -185,47 +184,55 @@ const Contact = () => {
   const contactEmail = "Sudarshankarunanithy7@gmail.com"
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
+          {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Get In Touch</h2>
-            <div className="w-20 h-1 bg-teal-500 mx-auto mb-8"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Have a project in mind or want to discuss potential opportunities? Feel free to reach out! I'm always open
-              to new challenges and collaborations.
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Let's connect
+            </h2>
+            <div className="w-20 h-1 bg-gray-900 mx-auto mb-8"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Have a project in mind or want to discuss potential opportunities? Feel free to reach out! I'm always open to new challenges and collaborations.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-8">
-            <motion.div variants={itemVariants} className="md:col-span-2 space-y-6">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">Contact Information</h3>
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Contact Information */}
+            <motion.div variants={itemVariants} className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 text-gray-900">Get In Touch</h3>
+                <p className="text-gray-600 mb-8">
+                  Ready to start your next data project? Let's discuss how I can help bring your vision to life.
+                </p>
+              </div>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start p-4 bg-white rounded-lg border border-gray-200 hover:border-teal-500/50 transition-colors duration-300"
+                    className="flex items-start space-x-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-colors duration-300"
                   >
-                    <div className="mr-4 text-teal-500 mt-1">{info.icon}</div>
+                    <div className="text-gray-900 mt-1">{info.icon}</div>
                     <div>
-                      <h4 className="font-medium text-gray-600">{info.title}</h4>
-                      <p className="text-gray-900">{info.value}</p>
+                      <h4 className="font-medium text-gray-900">{info.title}</h4>
+                      <p className="text-gray-600">{info.value}</p>
                     </div>
                   </a>
                 ))}
               </div>
 
-              <div className="pt-6">
+              <div>
                 <h4 className="text-lg font-bold mb-4 text-gray-900">Connect with me</h4>
                 <div className="flex gap-4">
                   {socialLinks.map((social, index) => (
@@ -234,8 +241,8 @@ const Contact = () => {
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-gray-50 text-gray-600 rounded-full hover:bg-teal-500 hover:text-white transition-colors duration-300"
-                      whileHover={{ y: -5 }}
+                      className="p-3 bg-white text-gray-600 rounded-full hover:bg-gray-900 hover:text-white transition-colors duration-300 border border-gray-200"
+                      whileHover={{ y: -2 }}
                       aria-label={social.label}
                     >
                       {social.icon}
@@ -245,9 +252,10 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="md:col-span-3">
-              <div className="bg-white p-8 rounded-xl border border-gray-200 hover:border-teal-500/50 transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-6 text-gray-900">Send a Message</h3>
+            {/* Contact Form */}
+            <motion.div variants={itemVariants}>
+              <div className="bg-white p-8 rounded-2xl border border-gray-200">
+                <h3 className="text-2xl font-bold mb-6 text-gray-900">Start a project</h3>
 
                 {errorMessage && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600">
@@ -255,10 +263,10 @@ const Contact = () => {
                   </div>
                 )}
 
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-600 mb-1">
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         Your Name
                       </label>
                       <input
@@ -268,11 +276,11 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-black"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-1">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                         Your Email
                       </label>
                       <input
@@ -282,12 +290,12 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-black"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                       />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-600 mb-1">
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                       Subject
                     </label>
                     <input
@@ -297,11 +305,11 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-black"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-600 mb-1">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                       Message
                     </label>
                     <textarea
@@ -311,13 +319,13 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none text-black"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent resize-none"
                     ></textarea>
                   </div>
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-teal-500 hover:bg-teal-600 text-white py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-70 flex items-center justify-center"
+                    className="w-full bg-gray-900 hover:bg-gray-800 text-white py-4 rounded-lg font-medium transition-all duration-300 disabled:opacity-70 flex items-center justify-center"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
